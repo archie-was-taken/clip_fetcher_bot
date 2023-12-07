@@ -1,0 +1,22 @@
+<b>Help for the bot</b>
+
+COMMAND DESCRIPTION:
+•<code>/start</code>: provides a nice introduction—I hope!
+•<code>/url</code>: get the download link of the video
+•<code>/download</code>: download the video directly; not recommended for large video files, especially large YouTube videos. 
+•<code>/dl</code>: alias for <code>/download</code> 
+•<code>/help</code>: display this message. 
+
+COMMAND SYNTAX:
+•<code>/start</code>
+
+•<code>/url [video_url]</code>
+   e.g.: <code>/url https://example.com/</code> 
+
+•<code>/download [video_url]</code>
+   e.g.: <code>/download https://example.com/</code> 
+
+•<code>/dl [video_url]</code>
+   e.g.: <code>/dl https://example.com/</code> 
+
+•<code>/help</code> 
