@@ -1,6 +1,6 @@
 # Clip Fetcher Bot
 
-A Telegram bot for downloading videos from popular websites like YouTube, Instagram, Reddit, Facebook etc. This bot uses the popular `yt-dl` program
+A Telegram bot for downloading videos from popular websites like YouTube, Instagram, Reddit, Facebook etc. This bot uses the popular `yt-dlp` program
 in the back end.
 
 ## Access
@@ -8,11 +8,11 @@ You can access the bot [here](https://t.me/clip_fetcher_bot).
 
 ## Features
 
-- Download videos directly within Telegram chat windows from almost all popular websites. A complete list of all supported sites can be found [here](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
+- Download videos directly within Telegram chat windows from almost all popular websites. A complete list of all supported sites can be found [here](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md).
 
 - Get the link to download the video in case you do not want to download now
-for whatever reason. *Do note that YouTube video download links expire after
-some time*.
+for whatever reason. **Do note that YouTube video download links expire after
+some time**.
 
 
 ## Usage
@@ -25,9 +25,10 @@ For futher help, including the various commands the bot supports, type `/help` o
 If you'd like to have your own bot and use this bot's code, you'd need to have the following:
 
 - Python >=3.8
-- [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot/)
+- [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot/)
 - An API key from [BotFather](https://t.me/BotFather). Type `/help` in its chat to learn how to do that.
 - A minimal server that will run the Python program.
+- [`yt-dlp`](https://github.com/yt-dlp/yt-dlp)
 
 NOTE: Copy the API key and save it to a text file named `api_key.txt`. 
 
