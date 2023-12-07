@@ -56,3 +56,6 @@ If you'd like to contribute to the development of the bot, thank you! The follow
 - **Respond to Feedback**: Be prepared to accept constructive criticism and respond to feedback on your pull request. Changes may not be accepted as is, and may require further work or adjustment.
 
 Thanks for the help! 😄
+
+## License
+This project is licensed under the terms of the MIT License. This means you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, under the condition that you include the original copyright notice and disclaimers in any copies of the software or substantial portions of it.
