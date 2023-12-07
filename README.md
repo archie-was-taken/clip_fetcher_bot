@@ -5,11 +5,14 @@ A Telegram bot for downloading videos from popular websites like YouTube, Instag
 ## Access
 You can access the bot [here](https://t.me/clip_fetcher_bot).
 
-## Run locally
-If you'd like the bot to run locally, you'd need to have the following:
+## Host it yourself
+If you'd like to have your own bot and use this bot's code, you'd need to have the following:
 
 - Python >=3.8
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot/)
 - An API key from [BotFather](https://t.me/BotFather). Type `/help` in its chat to learn how to do that.
+- A minimal server that will run the Python program.
 
-Copy the API key and save it to a text file named `api_key.txt`. You're good to go 👍
+NOTE: Copy the API key and save it to a text file named `api_key.txt`. 
+
+You're good to go 👍
