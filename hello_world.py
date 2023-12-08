@@ -19,13 +19,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=f'Hello, {first_name}! This bot can download videos from all'
-        ' popular sites like YouTube, Instagram, Reddit, TikTok etc. To learn'
+        ' popular sites like YouTube, Instagram, Reddit, Twitch etc. To learn'
         ' how to use the bot, type /help.',
         reply_to_message_id=update.message.message_id
     )
 
 
-async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     with open('help.txt') as help_text:
         help_text = help_text.read()
 
@@ -57,16 +57,16 @@ async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
     timestamp = int(time.time())
     file_path = f'test/video_{chat_id}_{timestamp}.mp4'
 
+    temp_message = await context.bot.send_message(
+            chat_id=chat_id,
+            text='Downloading video and sending. Please wait.',
+            reply_to_message_id=update.message.message_id)
+        
     subprocess.call(
         ['yt-dlp', '--format', 'bestvideo+bestaudio/best', 
         '--merge-output-format', 'mp4', '--concurrent-fragments', '4', 
         '--no-playlist', f'{url}', '-o',f'{file_path}']
         )
-    
-    temp_message = await context.bot.send_message(
-        chat_id=chat_id,
-        text='Downloading video and sending. Please wait.',
-        reply_to_message_id=update.message.message_id)
     
     # subprocess.call(['ffmpeg', '-i', file_path, '-vf', 'scale=1:360', 
     #                compressed_file_path])
@@ -105,7 +105,7 @@ if __name__ == '__main__':
         CommandHandler('dl', download)
     )
     application.add_handler(
-        CommandHandler('help', help)
+        CommandHandler('help', help_command)
     )
 
     application.run_polling()
