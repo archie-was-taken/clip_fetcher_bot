@@ -1,14 +1,17 @@
-<b>Help for the bot</b>
+<b><u>HELP FOR THE BOT</u></b>
 
-COMMAND DESCRIPTION:
-•<code>/start</code>: provides a nice introduction—I hope!
+<b>Command Description</b>:
+•<code>/start</code>: provides a nice introduction<span class="tg-spoiler">—I hope!</span>
+•<code>/help</code>: display this message. 
 •<code>/url</code>: get the download link of the video
 •<code>/download</code>: download the video directly; not recommended for large video files, especially large YouTube videos. 
-•<code>/dl</code>: alias for <code>/download</code> 
-•<code>/help</code>: display this message. 
+•<code>/dl</code>: alias for <code>/download</code>
+•<code>/audio</code>: download audio from a website; convert video files in url to audio-only files. 
 
-COMMAND SYNTAX:
+<b>Command Syntax</b>:
 •<code>/start</code>
+
+•<code>/help</code> 
 
 •<code>/url [video_url]</code>
    e.g.: <code>/url https://example.com/</code> 
@@ -19,4 +22,5 @@ COMMAND SYNTAX:
 •<code>/dl [video_url]</code>
    e.g.: <code>/dl https://example.com/</code> 
 
-•<code>/help</code> 
+•<code>/audio [media_url]</code>
+   e.g.: <code>/audio https://example.com/</code>

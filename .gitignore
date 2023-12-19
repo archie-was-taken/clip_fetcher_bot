@@ -171,6 +171,7 @@ cython_debug/
 
 # misc
 lib64
+test/
 
 # Ignore API key file
 api_key.txt

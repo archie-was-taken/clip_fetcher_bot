@@ -106,8 +106,51 @@ async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if os.path.isfile(file_path):
         os.remove(file_path)
+
+
+async def audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    url = context.args[0]
+    chat_id = update.effective_chat.id
+    timestamp = int(time.time())
+    file_path = f'test/audio_{chat_id}_{timestamp}.mp3'
+
+    temp_message = await context.bot.send_message(
+        chat_id=chat_id,
+        text='Downloading the audio, please wait.',
+        reply_to_message_id=update.message.message_id
+    )
+
+    try:
+        subprocess.run(
+            ['yt-dlp', '-x', '--audio-format', 'mp3',
+             '-o', file_path, url],
+             check=True
+        )
+    except subprocess.CalledProcessError:
+        await context.bot.edit_message_text(
+            chat_id=chat_id,
+            message_id=temp_message.message_id,
+            text='Invalid URL. No media source found at target.'
+            ' Please try again.'
+        )
+    with open(file_path, 'rb+') as audio:
+        await context.bot.send_audio(
+            chat_id=update.effective_chat.id,
+            audio=audio,
+            reply_to_message_id=update.message.message_id,
+            write_timeout=1000,
+        )
+    await context.bot.delete_message(
+        chat_id=update.effective_chat.id,
+        message_id=temp_message.message_id,
+    )
+
+    if os.path.isfile(file_path):
+        os.remove(file_path
     
 
+)
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
@@ -125,9 +168,11 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('url', url))
     application.add_handler(CommandHandler('download', download))
     application.add_handler(CommandHandler('dl', download))
+    application.add_handler(CommandHandler('audio', audio))
     application.add_handler(CommandHandler('help', help_command))
     
     # handler for unknown commands
     application.add_handler(MessageHandler(filters.COMMAND, unknown))
+    
     application.run_polling()
 
