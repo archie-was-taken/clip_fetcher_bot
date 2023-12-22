@@ -61,8 +61,8 @@ async def url(update: Update, context: ContextTypes.DEFAULT_TYPE):
             " Please recheck your link to see if it's correct."
             )
         else:
-            message_text = f'Click <a href="{output[1]}">here</a>' 
-            ' to download the video.'
+            message_text = (f'Click <a href="{output[1]}">here</a>' 
+            ' to download the video.')
     finally:
         await context.bot.send_message(
                 chat_id=update.effective_chat.id,
