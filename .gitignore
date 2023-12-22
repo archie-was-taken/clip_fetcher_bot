@@ -172,6 +172,7 @@ cython_debug/
 # misc
 lib64
 test/
+bye_world.py
 
 # Ignore API key file
 api_key.txt
