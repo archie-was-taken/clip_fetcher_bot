@@ -5,19 +5,11 @@ import time
 
 # Third-party modules
 from telegram import Update
-from telegram.ext import (ApplicationBuilder, 
-                          ContextTypes, 
-                          CommandHandler, 
-                          MessageHandler,
-                          filters
-                        )
+from telegram.ext import ContextTypes 
 from telegram.constants import ParseMode
 
 NO_URL_ERROR = ('No URL provided. Please see /help for instructions'
                 ' on how to use the command.')
-
-with open('api_key.txt') as api_key:
-    api_key = api_key.read()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -34,7 +26,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    with open('help.txt') as help_text:
+    with open('../assets/help.txt') as help_text:
         help_text = help_text.read()
 
     await context.bot.send_message(
@@ -84,7 +76,7 @@ async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         chat_id = update.effective_chat.id
         timestamp = int(time.time())
-        file_path = f'test/video_{chat_id}_{timestamp}.mp4'
+        file_path = f'tmp/video_{chat_id}_{timestamp}.mp4'
 
         temp_message = await context.bot.send_message(
                 chat_id=chat_id,
@@ -135,7 +127,7 @@ async def audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         chat_id = update.effective_chat.id
         timestamp = int(time.time())
-        file_path = f'test/audio_{chat_id}_{timestamp}.mp3'
+        file_path = f'tmp/audio_{chat_id}_{timestamp}.mp3'
 
         temp_message = await context.bot.send_message(
             chat_id=chat_id,
@@ -190,23 +182,3 @@ async def normal_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_to_message_id=update.message.message_id
     )
 
-if __name__ == '__main__':
-    application = ApplicationBuilder().token(api_key).build()
-
-    application.add_handler(CommandHandler('start', start))
-    application.add_handler(CommandHandler('url', url))
-    application.add_handler(CommandHandler('download', download))
-    application.add_handler(CommandHandler('dl', download))
-    application.add_handler(CommandHandler('audio', audio))
-    application.add_handler(CommandHandler('help', help_command))
-    
-    # handler for unknown commands
-    application.add_handler(MessageHandler(filters.COMMAND, unknown))
-
-    # handler for people who make the unholy mistake of thinking
-    # this bot is sentient
-    application.add_handler(
-        MessageHandler(filters.TEXT & (~filters.COMMAND), normal_chat)
-    )
-    
-    application.run_polling()
