@@ -28,3 +28,5 @@ def setup(api_key: str):
         MessageHandler(filters.TEXT & (~filters.COMMAND), normal_chat)
     )
     application.run_polling()
+
+setup(api_key)
